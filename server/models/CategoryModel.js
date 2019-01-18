@@ -7,7 +7,8 @@ var CategorySchema = new Mongoose.Schema(
   {
     categoryName: {
       type: Types.String,
-      required: true
+      required: true,
+      unique: true
     },
     subCategories: []
   },

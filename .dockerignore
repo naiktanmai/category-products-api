@@ -2,3 +2,4 @@ Dockerfile
 .gitignore
 node_modules
 README.md
+logs

@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  neo4j:
+    image: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./neo4j-data:/data
+      - ./neo4j-conf:/var/lib/neo4j/conf
+      - ./import:/var/lib/neo4j/import
+
+  category-products-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: category-products-api
+    labels:
+      app: category-products-api
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    ports:
+      - "8500:8500"
+    links:
+      - neo4j
