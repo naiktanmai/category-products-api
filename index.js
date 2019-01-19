@@ -5,17 +5,12 @@ const logger = require("./server/utils/logger");
 const neo4jSessionCleanup = require("./server/middlewares/neo4jSessionCleanup");
 global.logger = logger;
 
-/**
- * initialize DB
- */
-require("./server/utils/db");
-
 const app = express();
 
-api.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(neo4jSessionCleanup);
 
-app.use("/category", require("./server/routes/category"));
+app.use("/api", require("./server/routes/"));
 
 app.use((err, req, res, next) => {
   global.logger.error(err.stack, err.name);

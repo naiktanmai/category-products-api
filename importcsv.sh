@@ -4,6 +4,6 @@ neo4j-admin import \
     --nodes category.csv \
     --nodes products.csv \
     --relationships:HAS_PRODUCT hasproduct.csv \
-    --relationships:SUBCATEGORY_OF subcategory_of.csv \
+    --relationships:HAS_SUBCATEGORY has_subcategory.csv \
     --ignore-missing-nodes=true \
     --multiline-fields=true

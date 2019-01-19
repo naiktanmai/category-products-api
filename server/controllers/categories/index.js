@@ -1,15 +1,20 @@
-const Category = require("../../models/CategoryModel");
+const { getSession } = require("../../utils/db");
+const Categories = require("../../models/categories");
 
-exports.addCategory = async ({ categoryName = "", subCategories = [] }) => {
-  let newCategory = await new Category({
-    categoryName,
-    subCategories
-  }).save();
-
-  return newCategory;
+exports.getCategories = async (req, res, next) => {
+  try {
+    let categories = await Categories.getAll(getSession(req));
+    return res.status(200).json(categories);
+  } catch (error) {
+    next(error);
+  }
 };
 
-exports.getCategories = async ({ page, perPage }) => {
-  let categories = await Category.find({}).paginate(page, perPage);
-  return categories;
+exports.addCategory = async (req, res, next) => {
+  try {
+    let categories = await Categories.addCategory(getSession(req), req.body);
+    return res.status(200).json(categories);
+  } catch (error) {
+    next(error);
+  }
 };

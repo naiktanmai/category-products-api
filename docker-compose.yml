@@ -10,6 +10,7 @@ services:
       - ./neo4j-data:/data
       - ./neo4j-conf:/var/lib/neo4j/conf
       - ./import:/var/lib/neo4j/import
+      - ./plugins:/var/lib/neo4j/plugins
 
   category-products-api:
     build:
