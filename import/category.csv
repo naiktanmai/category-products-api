@@ -1,12 +1,11 @@
 id:ID,name,:LABEL
-1,ELECTRONICS,Category
-2,COMPUTERS,Category
-3,DESKTOPS,Category
-4,LAPTOPS,Category
-5,BOOKS,Category
-6,EBOOKS,Category
-7,PAPERBACK,Category
-8,Netbook,Category
-9,Business laptop,Category
-10,Gaming rigs,Category
-
+cjr4gkubq0000zbpet7mio2br,ELECTRONICS,Category
+cjr4gkubr0001zbpez47zjn1m,COMPUTERS,Category
+cjr4gkubr0002zbpet60eyzn0,DESKTOPS,Category
+cjr4gkubr0003zbpeob8rr109,LAPTOPS,Category
+cjr4gkubr0004zbpejua10258,BOOKS,Category
+cjr4gkubr0005zbpekuj9sjvl,EBOOKS,Category
+cjr4gkubr0006zbpe26datfpb,PAPERBACK,Category
+cjr4gkubr0007zbpe5jitq3fv,Netbook,Category
+cjr4gkubr0008zbpezthfehd4,Business laptop,Category
+cjr4gkubr0009zbpe4ltjfwkb,Gaming rigs,Category

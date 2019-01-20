@@ -30,3 +30,9 @@ exports.updateProductSchema = {
     name: Joi.string().required()
   })
 };
+
+exports.getProductByCategorySchema = {
+  params: Joi.object().keys({
+    categoryId: Joi.string().required()
+  })
+};

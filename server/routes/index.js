@@ -1,13 +1,18 @@
 const { Router } = require("express");
 const { getCategories, addCategory } = require("../controllers/categories");
-const { createProduct, updateProduct } = require("../controllers/products");
+const {
+  createProduct,
+  updateProduct,
+  getProductByCategory
+} = require("../controllers/products");
 const { celebrate } = require("celebrate");
 
 const {
   getCategoriesSchema,
   createProductSchema,
   updateProductSchema,
-  postCategoriesSchema
+  postCategoriesSchema,
+  getProductByCategorySchema
 } = require("../utils/validationSchemas");
 
 let routes = Router();
@@ -17,5 +22,10 @@ routes.get("/category", celebrate(getCategoriesSchema), getCategories);
 
 routes.post("/product", celebrate(createProductSchema), createProduct);
 routes.patch("/product/:id", celebrate(updateProductSchema), updateProduct);
+routes.get(
+  "/product/category/:categoryId",
+  celebrate(getProductByCategorySchema),
+  getProductByCategory
+);
 
 module.exports = routes;

@@ -32,19 +32,17 @@ const linkCategories = async (
 ) => {
   let addRelationsQuery = [
     `MATCH(category:Category {id: \"${categoryId}\"})`,
-    "MATCH(subCategory:Category) where id(category) IN " +
+    "MATCH(subCategory:Category) WHERE subCategory.id IN " +
       "[" +
-      subCategories +
+      subCategories.map(c => `\"${c}\"`).join(",") +
       "]",
-    "MATCH(parentCategory:Category) where id(category) IN " +
+    "MATCH(parentCategory:Category) WHERE parentCategory.id IN " +
       "[" +
-      parentCategories +
+      parentCategories.map(c => `\"${c}\"`).join(",") +
       "]",
-    "CREATE (category) -[:HAS_SUBCATEGORIES]-> (subCategory)",
-
-    "CREATE (category) <-[:HAS_SUBCATEGORIES]- (parentCategory)",
-
-    "RETURN subCategory, parentCategory "
+    "CREATE UNIQUE(category) -[:HAS_SUBCATEGORY]-> (subCategory)",
+    "CREATE UNIQUE(category) <-[:HAS_SUBCATEGORY]- (parentCategory)",
+    "RETURN subCategory, parentCategory"
   ].join("\n");
   console.log(addRelationsQuery);
 
@@ -60,7 +58,7 @@ const linkCategories = async (
 
 exports.addCategory = async (
   session,
-  { name, subCategories, parentCategories }
+  { name, subCategories = [], parentCategories = [] }
 ) => {
   let newCategory = await session.run(
     `CREATE (category:Category {id: {id}, name: {name}}) RETURN category`,

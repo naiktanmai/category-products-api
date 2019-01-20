@@ -22,3 +22,15 @@ exports.updateProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getProductByCategory = async (req, res, next) => {
+  try {
+    let products = await Products.getProductByCategory(
+      getSession(req),
+      req.params
+    );
+    return res.status(200).json(products);
+  } catch (error) {
+    next(error);
+  }
+};
