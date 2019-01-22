@@ -24,4 +24,4 @@ app.use((err, req, res, next) => {
   return res.status(err.statusCode || 500).json({ err: err.stack });
 });
 
-app.listen(process.env.APP_PORT, process.eventNames.APP_HOST);
+app.listen(process.env.APP_PORT, process.env.APP_HOST);
